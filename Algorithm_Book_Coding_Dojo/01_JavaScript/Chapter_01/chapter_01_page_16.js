@@ -104,3 +104,72 @@ function printAndCountFactors(numValMin, numValMax, numValFactor){
 printAndCountFactors(0, 10, 2)
 // 10
 printAndCountFactors(3, 30, 3)
+
+function multiplesOfFactor(numValMin, numValMax, numValFactor){
+    var i = numValMin;
+    while( i <= numValMax ){
+        if( i % numValFactor == 0 ){
+            console.log(`${i} is a Factor of ${numValFactor}`);
+        }
+        i += 1;
+    }
+}
+
+multiplesOfFactor(6, 60, 6)
+
+function countingTheDojoWay(numValMin, numValMax, numValFirstFactor, numValSecondFactor){
+    for(var i = numValMin; i <= numValMax; i += 1){
+        if(i % numValSecondFactor == 0){
+            // console.log(`Number ${i} is Divisible by ${numValSecondFactor}`);
+            console.log(`Coding Dojo`);
+        }
+        else if( i % numValFirstFactor == 0 ){
+            // console.log(`Number ${i} is Divisible by ${numValFirstFactor}`);
+            console.log(`Coding`);
+        }
+        else {
+            console.log(`Number is ${i}`);
+        }
+    }
+}
+
+countingTheDojoWay(1, 100, 5, 10)
+
+function whatDoYouKnow(incoming){
+    console.log(`Incoming is Equal to: ${incoming}`);
+}
+
+whatDoYouKnow("Everything");
+whatDoYouKnow("is")
+whatDoYouKnow("Not Real!")
+
+function whoaThatSuckerIsHuge(numValMin, numValMax){
+    if(numValMin / numValMax == 1 || numValMin / numValMax == -1){
+        console.log("The Minimum Number and the Maximum Number .  The Sum Will be 0");
+    }
+    else {
+        var sum = 0;
+        for(var i = numValMin; i < numValMax; i += 1){
+            if( i % 2 != 0 ){
+                sum = sum + i;
+            }
+            console.log(`At ${i}, the Sum is: ${sum}`);
+        }
+        console.log(sum);
+    }
+}
+
+whoaThatSuckerIsHuge(-30, 30)
+
+function countDownByFactor(numValMin, numValMax, numValFactor){
+    var i = numValMax;
+    while( i > numValMin){
+        if( i % numValFactor == 0 ){
+            console.log(`${i}`);
+        }
+        i -= 1;
+    }
+}
+
+countDownByFactor(0, 40, 4)
+countDownByFactor(5, 25, 5)
