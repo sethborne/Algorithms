@@ -173,3 +173,29 @@ function countDownByFactor(numValMin, numValMax, numValFactor){
 
 countDownByFactor(0, 40, 4)
 countDownByFactor(5, 25, 5)
+
+function flexibleCountdown(numValMin, numValMax, numValFactor){
+    for(var i = numValMin; i <= numValMax; i += 1){
+        if( i % numValFactor == 0 ){
+            console.log(`${i} is a Factor of ${numValFactor}`);
+        }
+    }
+}
+
+flexibleCountdown(0, 10, 2);
+flexibleCountdown(18, 30, 3)
+
+function theFinalCountdown(numValFactor, numValMin, numValMax, numValExclude){
+    var i = numValMax;
+    while( i >= numValMin ){
+        if( i % numValFactor == 0 ){
+            if( i != numValExclude ){
+                console.log(`${i} is a Factor of ${numValFactor}`);
+            }
+        }
+        i -= 1;
+    }
+}
+
+theFinalCountdown(2, 0, 10, 8);
+theFinalCountdown(3, 18, 30, 21);
