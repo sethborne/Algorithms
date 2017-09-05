@@ -122,6 +122,31 @@ giveMeSpace();
 previousLengths([ "this", "is", "a", "longish", "kinda", "halfassed", "list", "o'", "strings"]);
 //[ 7, 4, 2, 1, 7, 5, 9, 4, 2 ]
 
+function addSevenToMost(inputArray, numValInc){
+    var newArray = [];
+    if(inputArray.length == 1){
+        console.log("Arrays must be longer than 1");
+        // break
+    }
+    for(var i = 0; i < inputArray.length; i += 1){
+        if(i > 0){
+            // var newNumVal = inputArray[]
+            newArray.push(inputArray[i] + numValInc)
+        }
+        else {
+            newArray.push(inputArray[i]);
+        }
+    }
+    console.log("Input Array:");
+    console.log(inputArray);
+    console.log(`New Array: Add: ${numValInc}`);
+    console.log(newArray);
+    return newArray;
+}
+
+giveMeSpace();
+addSevenToMost([0, 0, 7, 14, 21, 28], 7)
+
 function reverseArray(inputArray){
     var startIndex = 0;
     var endIndex = inputArray.length-1;
@@ -169,3 +194,74 @@ function reverseArray(inputArray){
 giveMeSpace();
 reverseArray([2, 4, 6, 1, 3])
 reverseArray([5, 2, 9, 10, 4, 6])
+
+function outlookNegative(inputArray){
+    for(var i = 0; i < inputArray.length; i += 1){
+        if(inputArray[i] > 0){
+            inputArray[i] = inputArray[i] * -1;
+        }
+    }
+    console.log(inputArray);
+    return inputArray;
+}
+
+giveMeSpace();
+outlookNegative([-3, 2, -1, 0, 1, -2, 3])
+outlookNegative([0, 1, 2, 3])
+
+function alwaysHungry(inputArray){
+    var countFood = 0;
+    for(var i = 0; i < inputArray.length; i += 1){
+        if(inputArray[i] == "food"){
+            console.log("yummy");
+            countFood += 1;
+        }
+    }
+    if(countFood == 0){
+        console.log("I'm Hungry");
+    }
+}
+
+giveMeSpace();
+alwaysHungry([1, 2, 3, 4, 5]);
+alwaysHungry(["food", "food", "food", 1, 2, 3])
+
+function swapTowardsCenter(inputArray){
+    var startIndex = 0;
+    var endIndex = inputArray.length - 1;
+    
+    if(inputArray.length < 2){
+        console.log("Array is too Small:  ");
+        console.log(inputArray);
+        return inputArray;
+    }
+    while( startIndex !== endIndex ){
+        if( startIndex > endIndex ){
+            break;
+        }
+        else{
+            temp = inputArray[endIndex];
+            inputArray[endIndex] = inputArray[startIndex];
+            inputArray[startIndex] = temp;
+            startIndex += 2;
+            endIndex -= 2;
+        }
+    }
+    console.log(inputArray);
+    return inputArray;
+}
+
+giveMeSpace();
+swapTowardsCenter([-5, -3, -1, 0, 2, 4, 6]);
+swapTowardsCenter([-5, -3, -1, 2, 4, 6]);
+
+function scaleTheArray(inputArray, numVal){
+    for (var i = 0; i < inputArray.length; i += 1) {
+        inputArray[i] = inputArray[i] * numVal;
+    }
+    console.log(inputArray);
+    return inputArray;
+}
+
+scaleTheArray([0, 1, 2, 3, 4, 5], 5);
+scaleTheArray([2, 4, 6, 8, 10], 4)
