@@ -1,3 +1,32 @@
+function giveMeSpace(){
+    console.log("                                                         ");
+}
+
+//sigma
+function sigma(numVal){
+    var sum = 0;
+    for(var i = 1; i <= numVal; i += 1){
+        sum += i;
+        // console.log(`The Sum is: ${sum} at loop: ${i}`)
+    }
+    console.log(sum);
+}
+giveMeSpace();
+sigma(5);
+sigma(15);
+
+function factorial(numVal){
+    var product = 1;
+    for(var i = 1; i <= numVal; i += 1){
+        product *= i;
+    }
+    console.log(product);
+}
+giveMeSpace();
+factorial(3);
+factorial(6);
+
+
 //star art
 function drawLeft(numValStringLength, numValStars){
     var stringLeft = "";
@@ -21,6 +50,7 @@ function drawLeft(numValStringLength, numValStars){
     }
 }
 
+giveMeSpace();
 drawLeft(75, 5);
 drawLeft(50, 10);
 drawLeft(10, 15);
@@ -51,6 +81,7 @@ function drawRight(numValStringLength, numValStars){
     }
 }
 
+giveMeSpace();
 drawRight(10, 5)
 
 function drawRight2(numValStringLength, numValStars){
@@ -62,12 +93,12 @@ function drawRight2(numValStringLength, numValStars){
     }
     else{
         for(var i = numValStringLength-1; i >= 0; i -= 1){
-            console.log(`In Loop at ${i}`);
+            // console.log(`In Loop at ${i}`);
             stringRight[i] += "x";
             
             if(i > numValStringLength - numValStars){
                 stringRight[i] += "*";
-                console.log(`In Loop: If: at ${i}`);
+                // console.log(`In Loop: If: at ${i}`);
             }
             else{
                 if( i == 0 ){
@@ -75,7 +106,7 @@ function drawRight2(numValStringLength, numValStars){
                 }
                 else{
                     stringRight[i] += "-";
-                    console.log(`In Loop: Else: Else: at ${i}`);
+                    // console.log(`In Loop: Else: Else: at ${i}`);
                 }
             }
         }
@@ -86,7 +117,7 @@ function drawRight2(numValStringLength, numValStars){
         // console.log(stringRight[7]);
     }
 }
-
+giveMeSpace();
 drawRight2(10, 5)
 
 function drawCenter(numValStringLength, numValStars){
@@ -122,5 +153,6 @@ function drawCenter(numValStringLength, numValStars){
     }
     console.log(stringCenter);
 }
+giveMeSpace();
 drawCenter(10, 5)
-drawCenter(100, 50)
+drawCenter(20, 8)
