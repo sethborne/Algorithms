@@ -126,3 +126,47 @@ function nthLargest(inputArray, numVal){
 giveMeSpace();
 // 3
 nthLargest([ 6, 1, 5, 2, 4, 3 ], 4);
+
+function creditCardValidation(inputArray){
+    for(var i = 0; i < inputArray.length; i += 1){
+        if(typeof inputArray[i] == "number"){
+            // console.log(`is number`);
+        }
+        else{
+            return console.log(`The Array Contains Invalid Values, Must be All Numbers`);
+        }
+    }
+    // console.log(inputArray.length);
+    var sum = 0;
+    var lastArrayValue = inputArray[inputArray.length - 1];
+    var truncArray = inputArray;
+    truncArray.length = inputArray.length - 1;
+    console.log(truncArray);
+    var len = truncArray.length;
+    for(var j = len - 1; j >= 0; j -= 1){
+        if( j % 2 == 1){
+            inputArray[j] = inputArray[j] * inputArray[j];
+            if(inputArray[j] > 9){
+                inputArray[j] -= 9;
+            }
+        }
+        sum += inputArray[j];
+    }
+    console.log(inputArray);
+    
+    console.log(`Sum before lastArrayValue: ${sum}`);
+    sum += lastArrayValue;
+    console.log(`Sum after lastArrayValue: ${sum}`);
+    var returnBool;
+    if(sum % 10 == 0){
+        returnBool = true;
+    }
+    else{
+        returnBool = false;
+    }
+    console.log(returnBool);
+    return returnBool;
+}
+giveMeSpace();
+creditCardValidation([ 1, 2, 3, 4, 5, "Temp" ])
+creditCardValidation([ 1, 2, 3, 4, 5, 10 ])
