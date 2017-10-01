@@ -29,24 +29,21 @@ function translatePigLatin(inputString) {
         var tempCharArray = [];
         var i = 0;
         var count = 0;
-        while(i < vowelIndex){
-            i += 1;
-            // if(i < vowelIndex){
-                tempCharArray.push(splitInputString[i]);
-                console.log(splitInputString[i]);
-            // }
+        while(count < vowelIndex){
+            tempCharArray.push(splitInputString[0]);
+            console.log(splitInputString[0]);
+            count += 1;
             for(var j = 0; j < splitInputString.length; j += 1){
                 splitInputString[j] = splitInputString[j + 1];
             }
             splitInputString.pop(splitInputString[splitInputString.length - 1])
-            // splitInputString[i] = splitInputString[i + 1];
-            // console.log(splitInputString[i]);
-            // count += 1;
         }
         console.log(tempCharArray);
-        // splitInputString[splitInputString.length - 1] = firstChar;
-        // splitInputString.push("a");
-        // splitInputString.push("y");
+        for(var n = 0; n < tempCharArray.length; n += 1){
+            splitInputString.push(tempCharArray[n]);
+        }
+        splitInputString.push("y");
+        splitInputString.push("a");
         console.log(splitInputString);
     }
     inputString = splitInputString.join("");
