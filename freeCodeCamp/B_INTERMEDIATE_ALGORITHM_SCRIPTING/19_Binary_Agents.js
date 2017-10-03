@@ -39,7 +39,7 @@ function binaryAgent(inputString) {
         convertToIntegerArray.push(char);
     }
     console.log(convertToIntegerArray);
-    inputString = convertToIntegerArray.join("")
+    inputString = convertToIntegerArray.join("");
     console.log(inputString);
     return inputString;
 }
