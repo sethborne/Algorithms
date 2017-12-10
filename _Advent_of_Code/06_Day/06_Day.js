@@ -20,7 +20,7 @@
 
 // Given the initial block counts in your puzzle input, how many redistribution cycles must be completed before a configuration is produced that has been seen before?
 
-
+//
 //1 [0, 2, 7, 0]
 //2 [2, 4, 1, 2]
 //3 [3, 1, 2, 3]
