@@ -37,7 +37,7 @@ arrayConcat(['a', 'b'], [ 1, 2 ]);
 // min that gets time - 1 or 3 quicker, 1 or 3 same, 2 always slowest
 // const numberToFactor = 10500;
 // in general - 1 and 3 tie, or 3 is faster.  2 always slowest
-const numberToFactor = 25000
+var numberToFactor = 4
 // 1 always fastest, 3 always second, 2 always sloest
 // const numberToFactor = 3500000
 // 1 always fastest, 3 always second, 2 always sloest
@@ -54,7 +54,7 @@ function fasterFactorial(numFactor){
         finalFactorial *= i;
     }
     // console.log(finalFactorial);
-    let end = Date.now() - start;
+    let end = Math.ceil(Date.now() - start);
     console.log(finalFactorial);
     console.log("fasterFactorial - took", end, " ms");
     return finalFactorial;
@@ -82,7 +82,7 @@ function fasterFactorialBuildArray(arrLength){
     return finalProduct;
 }
 
-fasterFactorialBuildArray(numberToFactor)
+// fasterFactorialBuildArray(numberToFactor)
 
 function returnABuiltArray(min, max){
     let tempArray = [];
@@ -114,12 +114,82 @@ function fasterFactorialPassArray(arrLength){
     return finalProduct;
 }
 
-fasterFactorialPassArray(numberToFactor);
+// fasterFactorialPassArray(numberToFactor);
 
+var arrayOfPreviousFactorials = [];
+var arrayOfCalcTimesOfPreviousFactorials = [];
 
+function fastestFactorial(numVal){
+    // if you pass 0 or 1
+    if(numVal === 0 || numVal === 1){
+        // pull the value if it exists
+        if(arrayOfPreviousFactorials[numVal]){
+            return arrayOfPreviousFactorials[numVal];
+        }
+        // set the value to 1
+        else {
+            arrayOfPreviousFactorials[numVal] = 1;
+            return arrayOfPreviousFactorials[numVal];
+        }
+    }
+    // if value at the number exists - and isn't undefined (if undefined it will be false and not run the if)
+    if(arrayOfPreviousFactorials[numVal]){
+        let indexAccessStart = Date.now();
+        let numValFactorial = arrayOfPreviousFactorials[numVal];
+        let indexAccessEnd = Math.ceil(Date.now() - indexAccessStart);
+        console.log(arrayOfPreviousFactorials[numVal]);
+        console.log("Array Access Time for Factorial of: ", numVal, " is: ", indexAccessEnd);
+        console.log("Generation Time Saved for Factorial was: ", arrayOfCalcTimesOfPreviousFactorials[numVal]);
+        return numValFactorial
+    } // if the value isn't in the Previous Factorial, then we need to generate it.
+    else {
+        let generateFactorialStart = Date.now();
+        let finalProduct = 1;
+        for(let i = 1; i <= numberToFactor; i += 1){
+            finalProduct *= i
+            // as we iterate, if there is a iteration value that does not exist push it in the array (this is optional)
+            // if(!arrayOfPreviousFactorials[i]){
+            //     arrayOfPreviousFactorials.push[finalProduct];
+            // }    
+        }
+        let generateFactorialEnd = Math.ceil(Date.now() - generateFactorialStart);
+        console.log(generateFactorialEnd);
+        arrayOfCalcTimesOfPreviousFactorials[numVal] = generateFactorialEnd;
+        // push into array
+        arrayOfPreviousFactorials[numVal] = finalProduct;
+        console.log(arrayOfPreviousFactorials);
+        console.log(arrayOfCalcTimesOfPreviousFactorials);
+        console.log("Generation Time for Factorial was: ", generateFactorialEnd, " ms");
+        return finalProduct;
+    }
+}
+
+fastestFactorial(numberToFactor);
+// console.log("");
+
+// numberToFactor = 750000
+// fasterFactorial(numberToFactor);
+// fastestFactorial(numberToFactor);
+// console.log("");
+
+// numberToFactor = 750000
+// fasterFactorial(numberToFactor);
+// fastestFactorial(numberToFactor);
+// console.log("");
+
+// numberToFactor = 750000
+// fasterFactorial(numberToFactor);
+// fastestFactorial(numberToFactor);
+// console.log("");
+
+// numberToFactor = 750000
+// fasterFactorial(numberToFactor);
+// fastestFactorial(numberToFactor);
+
+// shuffle
 function randomArrayIndex(min, max){
     let randomIndex = Math.floor((Math.random()*(max-min+1))+min);
-    console.log("randomIndex", randomIndex);
+    // console.log("randomIndex", randomIndex);
     return randomIndex;
 }
 
@@ -130,7 +200,7 @@ function shuffleArrayWithRandom(inputArray){
         inputArray[i] = inputArray[getRandomIndex];
         inputArray[getRandomIndex] = storeTemp;
     }
-    console.log(inputArray);
+    // console.log(inputArray);
     return inputArray;
 }
 
