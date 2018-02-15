@@ -115,3 +115,23 @@ function fasterFactorialPassArray(arrLength){
 }
 
 fasterFactorialPassArray(numberToFactor);
+
+
+function randomArrayIndex(min, max){
+    let randomIndex = Math.floor((Math.random()*(max-min+1))+min);
+    console.log("randomIndex", randomIndex);
+    return randomIndex;
+}
+
+function shuffleArrayWithRandom(inputArray){
+    for(let i = 0; i < inputArray.length; i += 1){
+        let getRandomIndex = randomArrayIndex(0, inputArray.length-1);
+        let storeTemp = inputArray[i];
+        inputArray[i] = inputArray[getRandomIndex];
+        inputArray[getRandomIndex] = storeTemp;
+    }
+    console.log(inputArray);
+    return inputArray;
+}
+
+shuffleArrayWithRandom([1, 2, 3, 4, 5])
