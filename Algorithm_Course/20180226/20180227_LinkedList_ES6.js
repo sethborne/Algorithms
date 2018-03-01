@@ -80,7 +80,7 @@ class SingleLinkedList {
             return this.head.value
         }
     }
-    // just a test
+    // just a test #2
     length(){
         
     }
