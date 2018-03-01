@@ -80,11 +80,51 @@ class SingleLinkedList {
             return this.head.value
         }
     }
-    // just a test #2
+    // return number of nodes in the SLL
     length(){
-        
+        // if no head - return null because there is no length (also do a varient where return 0 and check if it evals false (it should))
+        if(!this.head){
+            return null;
+        }
+        else{
+            // wer'll need to traverse and make a count
+            let count = 0;
+            let currentNode = this.head;
+            // while we have a current node
+            while(currentNode){
+                // console.log("Value: ", currentNode.value);
+                // count
+                count += 1;
+                // then traverse
+                currentNode = currentNode.next;
+            }
+            return count;
+        }
     }
-    display(){}
+    // display - create a "print to console function", that will show the value of all nodes in the list
+    display(){
+        // if there is not a head
+        if(!this.head){
+            return  "There are no Values in the Linked List";
+        }
+        // else there are values
+        else {
+            // Want to display a message like:  Node (count): | has a Value of: (value)
+            // count var
+            let count = 0;
+            // traverse node
+            let currentNode = this.head;
+            // string
+            let displayString = '';
+            while(currentNode){
+                count += 1;
+                displayString += `Node Number: ${count} has a Value of: ${currentNode.value} | `;
+                //traverse
+                currentNode = currentNode.next;
+            }
+            return displayString;
+        }
+    }
     max(){}
     min(){}
     average(){}
@@ -118,4 +158,6 @@ SLL.contains(10);
 // SLL.removeFront();
 // console.log(SLL);
 // 20
-console.log(SLL.front());
+console.log("Front: ", SLL.front());
+console.log("Length: ", SLL.length());
+console.log(SLL.display());
