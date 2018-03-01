@@ -80,7 +80,10 @@ class SingleLinkedList {
             return this.head.value
         }
     }
-    length(){}
+    // just a test
+    length(){
+        
+    }
     display(){}
     max(){}
     min(){}
