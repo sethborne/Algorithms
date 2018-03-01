@@ -59,6 +59,8 @@ SingleLinkedList.prototype.contains = function(value){
     }
 }
 
+// Hey Seth - what the heck?  this returns nothing!
+// Oh - Hey Seth - isn't your previous head still connected to the current head?  GASP!
 SingleLinkedList.prototype.removeFront = function(){
     // fast fail
     if(!this.head){
