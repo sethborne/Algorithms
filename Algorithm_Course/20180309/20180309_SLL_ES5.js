@@ -5,6 +5,13 @@ function SinglyLinkedList(){
 function Node(value){
     this.value = value;
     this.next = null;
+    this.removeSelf = function(){
+        removeNode = this;
+        tempNode = this.next;
+        this.value = tempNode.value;
+        this.next = tempNode.next;
+        return removeNode;
+    }
 }
 
 // ===================================================================
@@ -196,10 +203,12 @@ SLL.addNode(5);
 
 // SLL.partition(3);
 // 3 -- 3 1 2 4 5
-// 1 2 3 4 5
+// 2 1 3 4 5
 // SLL.partition(2);
 // 2 -- 3 1 2 4 5
 // 1 2 4 5 3
+
+console.log(SLL.head.next.next.removeSelf());
 
 // console.log(SLL.splitOnValue(20));
 
