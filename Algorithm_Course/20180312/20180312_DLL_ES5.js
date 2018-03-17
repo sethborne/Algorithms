@@ -85,7 +85,7 @@ DoublyLinkedList.prototype.kthValue = function(kthValue){
     }
     else {
         let nodeAtEnd = this.tail;
-        let loopNumber = kthValue - 1;
+        let loopNumber = kthValue;
         // while(loopNumber){
         while(nodeAtEnd.prev && loopNumber > 0){
             if(loopNumber > 0){
@@ -121,9 +121,37 @@ DoublyLinkedList.prototype.isValid = function(){
 // Palindrome
 // ===========================================================================
 // Prompt - Determine whether a DList is a palindrome
-//
+// PseudoCode - 
+
 DoublyLinkedList.prototype.palindrome = function(){
-    
+    // if no head, return null
+    if(!this.head){
+        return null;
+    }
+    else{
+        let frontNode = this.head;
+        let backNode = this.tail;
+        let isPalindrome = false;
+        // while(frontNode.prev !== backNode || frontNode.next === backNode.prev){
+        while(frontNode.prev !== backNode){
+            console.log(frontNode.value, backNode.value);
+            if(frontNode.value === backNode.value){
+                // 
+                isPalindrome = true;
+                frontNode = frontNode.next;
+                backNode = backNode.prev;
+            }
+            else {
+                return false;
+            }
+        }
+        if(isPalindrome){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
 
 // ===========================================================================
@@ -133,7 +161,7 @@ DoublyLinkedList.prototype.palindrome = function(){
 // begins (or null if no loop)
 //
 DoublyLinkedList.prototype.loopStart = function(){
-    
+    console.log(this);
 }
 
 let DLL = new DoublyLinkedList();
@@ -142,6 +170,13 @@ DLL.addNode(2);
 DLL.addNode(3);
 DLL.addNode(4);
 // DLL.prependValue(9, 4)
-console.log(DLL.kthValue(5));
+console.log(DLL.kthValue(1));
+// DLL.addNode('t');
+// DLL.addNode('o');
+// DLL.addNode('l');
+// DLL.addNode('o');
+// DLL.addNode('t');
+// console.log(DLL.palindrome());
+// console.log("List:", DLL.loopStart());
 
 console.log(DLL);
