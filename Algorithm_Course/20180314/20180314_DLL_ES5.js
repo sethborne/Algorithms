@@ -41,6 +41,9 @@ DoublyLinkedList.prototype = {
             return this;
         }
     },
+    
+    // while(frontNode.prev !== backNode && frontNode !== backNode.prev || frontNode.next !== backNode.prev){
+    
     // Combine previous work with a function that fixes errors found by isValid and breaks loops.
     repair: function(){
         
