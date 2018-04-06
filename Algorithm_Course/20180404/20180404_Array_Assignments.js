@@ -177,19 +177,51 @@
     function rotateArray(inputArray, shiftNum){
         if(shiftNum > inputArray.length){
             shiftNum = shiftNum % inputArray.length;
+            console.log(shiftNum);
         }
+        // shift should be in range
+        while(shiftNum){
+            let lastVal = inputArray.pop();
+            for(let i = inputArray.length; i > 0 ; i -= 1){
+                inputArray[i] = inputArray[i - 1];
+            }
+            inputArray[0] = lastVal;
+            shiftNum -= 1;
+        }
+        return inputArray
     }
+    
+    console.log(rotateArray([1, 2, 3], 1));
+    console.log(rotateArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5));
     
     function rotateArrayBI(inputArray, shiftNum){
         if(shiftNum > inputArray.length){
             shiftNum = shiftNum % inputArray.length;
         }
+        // shift value in range
+        let shiftValues = inputArray.splice((-1 * shiftNum));
+        // reverse to iterate
+        shiftValues.reverse();
+        shiftValues.forEach(function(arrValue){
+            inputArray.unshift(arrValue);
+        })
+        console.log(inputArray);
+        return inputArray;
     }
     
+    rotateArrayBI([1, 2, 3], 1)
+    rotateArrayBI([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5)
+    
     rotateArrayE56 = (inputArray, shiftNum) => {
-        
+        shiftNum > inputArray.length ? shiftNum = shiftNum % inputArray.length : shiftNum;
+        inputArray.unshift(...inputArray.splice(-1 * shiftNum))
+        return inputArray;
     }
-
+    
+    console.log(rotateArrayE56([1, 2, 3], 1));
+    console.log(rotateArrayE56([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5));
+    
+    
 // ========================================================================================================================
 // Array: Filter Range
 // Alan is good at breaking secret codes. One method is to eliminate values that lie within a specific known range. Given arr and values min and max, retain only the array values between min and max. Work in-place: return the array you are given, with values in original order. No built-in array functions.
