@@ -244,36 +244,116 @@ makeAnArray = (start, end) => {
     
     console.log(swapNegsForStringBI([1, -1, 2, -2, 3, -3, 4]));
     
-    swapNegsForStringES6 = (inputArray) => {
-        
-    }
+    swapNegsForStringES6 = (inputArray) => inputArray.map((item) => item < 0 ? 'Dojo' : item);
+    
+    console.log(swapNegsForStringES6([2, -2, 4, -4, 6, -6, 8]));
 // ========================================================================================================================
 // Print Odds 1-255
 // Print all odd integers from 1 to 255.
 // ========================================================================================================================
 
+    function printOddsFromTo(inputNumMin, inputNumMax){
+        for(let i = inputNumMin; i <= inputNumMax; i += 1){
+            if(i % 2 === 1){
+                console.log(i);
+            }
+        }
+    }
+    
+    printOddsFromTo(1, 25);
+
+    function printOddsFromToBI(inputNumMin, inputNumMax){
+        for(let i = inputNumMin; i <= inputNumMax; i += 1){
+            i % 2 === 1 ? console.log(i) : i
+        }
+    }
+    
+    printOddsFromToBI(1, 15)
+    
+    printOddsFromToES6 = (inputNumMin, inputNumMax) => makeAnArray(inputNumMin, inputNumMax).filter((int) => int % 2 === 1).forEach((int) => console.log(int));
+    
+    printOddsFromToES6(1, 25)
 // ========================================================================================================================
 // *Iterate and Print Array
 // Iterate through a given array, printing each value.
 // ========================================================================================================================
-
+    
+    function iterateAndPrintArray(inputArray){
+        for(let i = 0; i < inputArray.length; i += 1){
+            console.log(inputArray[i]);
+        }
+    }
+    
+    iterateAndPrintArray(makeAnArray(10, 20));
+    
+    function iterateAndPrintArrayBI(inputArray){
+        inputArray.map((arrValue) => { console.log(arrValue)})
+    }
+    
+    iterateAndPrintArray(makeAnArray(15, 25))
+    
+    iterateAndPrintArrayES6 = (inputArray) => { inputArray.forEach( value => console.log(value)) };
+    
+    iterateAndPrintArrayES6(makeAnArray(100, 120));
 // ========================================================================================================================
 // Get and Print Average
 // Analyze an array’s values and print the average.
 // ========================================================================================================================
-
+    
+    function getAndPrintAverage(inputArray){
+        
+    }
+    
+    function getAndPrintAverageBI(inputArray){
+        
+    }
+    
+    getAndPrintAverageES6 = () => {}
 // ========================================================================================================================
 // Square the Values
 // Square each value in a given array, returning that same array with changed values.
 // ========================================================================================================================
 
+    function squareTheValue(inputArray){
+        
+    }
+    
+    function squareTheValueBI(inputArray){
+        
+    }
+    
+    squareTheValueES6 = (inputArray) => inputArray.map((arrayValue) => arrayValue * arrayValue)
+    console.log(squareTheValueES6(makeAnArray(1, 5)));
 // ========================================================================================================================
 // Zero Out Negative Numbers
 // Return the given array, after setting any negative values to zero.
 // ========================================================================================================================
+
+    function zeroOutNegativeNumber(){
+        
+    }
+    
+    function zeroOutNegativeNumberBI(){
+        
+    }
+    
+    zeroOutNegativeNumberES6 = () => {
+        
+    }
 
 // ========================================================================================================================
 // *Shift Array Values
 // Given an array, move all values forward by one index, dropping the first and leaving a '0' value at the end.
 // ========================================================================================================================
 
+    function shiftArrayValues(){
+        
+    }
+    
+    function shiftArrayValuesBI(){
+        
+    }
+    
+    shiftArrayValuesES6 = () => {
+        
+    }
