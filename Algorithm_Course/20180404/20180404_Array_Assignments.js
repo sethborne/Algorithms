@@ -87,16 +87,54 @@
 // ========================================================================================================================
 // for built in, 
     function minToFront(inputArray){
-        
+        let min = inputArray[0];
+        let minIndex = 0;
+        for(let i = 0; i < inputArray.length; i += 1){
+            if(inputArray[i] < min){
+                min = inputArray[i];
+                minIndex = i;
+            }
+        }
+        for(let i = minIndex; i >= 0; i -= 1){
+            inputArray[i] = inputArray[i - 1];
+        }
+        inputArray[0] = min;
+        return(inputArray)
     }
-
-// ========================================================================================================================
-// Passing By Reference
-// Arrays are passed by reference. This means that when an array is sent as an argument, a pointer is sent. For this reason, even though parameters are always copies of the originals, with arrays (and all objects) a pointer is copied, resulting in caller and callee both having a copy of the same pointer. Hence both are looking at the same location in memory, and both will reference the same array. When we pass an array to another function, the array is passed “live” – changes the callee makes in that array are reflected when we return to the caller, regardless of whether the called function returns that array.
-// ========================================================================================================================
-
-
-
+    
+    console.log(minToFront([4, 2, 1, 3, 5]));
+    
+    function minToFrontBS(inputArray){
+        for(let i = inputArray.length; i >= 0; i -= 1){
+            if(inputArray[i] < inputArray[i - 1]){
+                let tempVar = inputArray[i];
+                inputArray[i] = inputArray[i - 1];
+                inputArray[i - 1] = tempVar;
+            }
+        }
+        return inputArray
+    }
+    console.log(minToFrontBS([4, 0, 2, 1, 3, 5]));
+    
+    function minToFrontBI(inputArray){
+        // find min
+        // let min = Math.min(...inputArray)
+        let min = inputArray.splice(inputArray[Math.min(...inputArray)], 1)[0];
+        console.log(min);
+        console.log(inputArray);
+        inputArray.unshift(min);
+        return inputArray
+    }
+    
+    console.log(minToFrontBI([4, 2, 1, 3, 5]));
+    
+    minToFrontES6 = (inputArray) => { 
+        inputArray.unshift(inputArray.splice(inputArray[Math.min(...inputArray)], 1)[0])
+        return inputArray
+    };
+    
+    console.log(minToFrontES6([4, 2, 1, 3, 5]));
+    
 // ========================================================================================================================
 // Array: Reverse
 // Given a numerical array, reverse the order of values, in-place. The reversed array should have the same length, with existing elements moved to other indices so that order of elements is reversed. Working ‘in-place’ means that you cannot use a second array – move values within the array that you are given. As always, do not use built-in array functions such as splice()
@@ -136,7 +174,21 @@
 // Third: minimize memory usage. With no new array, handle arrays/shiftBys in the millions. Fourth: minimize the touches of each element.
 // ========================================================================================================================
 
-
+    function rotateArray(inputArray, shiftNum){
+        if(shiftNum > inputArray.length){
+            shiftNum = shiftNum % inputArray.length;
+        }
+    }
+    
+    function rotateArrayBI(inputArray, shiftNum){
+        if(shiftNum > inputArray.length){
+            shiftNum = shiftNum % inputArray.length;
+        }
+    }
+    
+    rotateArrayE56 = (inputArray, shiftNum) => {
+        
+    }
 
 // ========================================================================================================================
 // Array: Filter Range
@@ -243,10 +295,72 @@
 // ========================================================================================================================
 // need to determine the position of the min and the max
 // at 0
-    // function skylineHeights(inputArray){
-    //     let isHigher = false;
-    //     let heightArray = [];
-    //     for(let i = 0; i < inputArray.length; i += 1){
-    //         if(inputArray[i] < inputArray[i + 1])
-    //     }
-    // }
+    function skylineHeights(inputArray){
+        let bldgsCanSeeArray = [];
+        let max = inputArray[0];
+        for(let i = 0; i < inputArray.length; i += 1){
+            if(inputArray[i] >= 0){
+                // the buildign is avove the ground
+                if(inputArray[i] >= max){
+                    max = inputArray[i]
+                    bldgsCanSeeArray.push(inputArray[i])
+                }
+                else {
+                    // can't see it becuase taller is blocking
+                    console.log(`At Height ${inputArray[i]} this building can not be seen.  There is a ${max} story tall building blocking its way!`);
+                }
+            }
+            else {
+                // can't see it below ground
+                console.log(`At Height ${inputArray[i]} this building is below the ground and can't be seen!`)
+            }
+            
+        }
+        return bldgsCanSeeArray;
+    }
+    
+    // console.log(skylineHeights([-1, 0, 1, 2, 3, 4, 5, 8, 2]));
+    // console.log(skylineHeights([0, 2, 8, 6, 4, 2, 5, 12, 2]));
+    
+    function skylineHeightsBI(inputArray){
+        let bldgsCanSeeArray = [];
+        let max = inputArray[0];
+        inputArray.forEach(function(arrValue){
+            if(arrValue >= 0){
+                if(arrValue >= max){
+                    max = arrValue;
+                    bldgsCanSeeArray.push(arrValue)
+                }
+                else {
+                    console.log(`At Height ${arrValue} this building can not be seen.  There is a ${max} story tall building blocking its way!`);
+                }
+            }
+            else {
+                console.log(`At Height ${arrValue} this building is below the ground and can't be seen!`)
+            }
+        })
+    }
+    
+    // console.log(skylineHeights([-1, 0, 1, 2, 3, 4, 5, 8, 2]));
+    // console.log(skylineHeights([0, 2, 8, 6, 4, 2, 5, 12, 2]));
+    
+    skylineHeightsES6 = (inputArray) => {
+        let max = inputArray[0];
+        let bldgsCanSeeArray = inputArray.filter((arrValue, index) => {
+            console.log(arrValue, index);
+            if(arrValue >= 0){
+                if(arrValue >= max){
+                    console.log(`Can See: Bldg Ht: ${arrValue} at Index: ${index}`);
+                    max = arrValue;
+                    return true;
+                }
+                else {
+                    console.log(`At Height ${arrValue} this building can not be seen.  There is a ${max} story tall building blocking its way!`);
+                }
+            }
+        })
+        return bldgsCanSeeArray
+    }
+    
+    // console.log(skylineHeightsES6([-1, 0, 1, 2, 3, 4, 5, 8, 2]));
+    // console.log(skylineHeightsES6([0, 0, 1, 8, 6, 4, 2, 5, 12, 2]));
