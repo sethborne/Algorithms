@@ -301,59 +301,116 @@ makeAnArray = (start, end) => {
 // ========================================================================================================================
     
     function getAndPrintAverage(inputArray){
-        
+        let finalSum = 0;
+        for(let i = 0; i < inputArray.length; i += 1){
+            finalSum += inputArray[i];
+        }
+        let average = finalSum / inputArray.length;
+        return {
+            finalSum: finalSum,
+            length: inputArray.length,
+            average: average
+        };
     }
+    
+    console.log(getAndPrintAverage([1, 3, 2, 4, 3, 5]));
     
     function getAndPrintAverageBI(inputArray){
-        
+        // return {
+        //     finalSum: (inputArray.reduce(function(acc, arrValue){ return acc + arrValue })),
+        //     length: inputArray.length,
+        //     average: (inputArray.reduce(function(acc, arrValue){ return acc + arrValue })) / inputArray.length
+        // }
+        return (inputArray.reduce(function(acc, arrValue){ return acc + arrValue })) / inputArray.length
     }
     
-    getAndPrintAverageES6 = () => {}
+    console.log(getAndPrintAverageBI([6, 8, 7, 9, 8, 10]));
+    
+    getAndPrintAverageES6 = (inputArray) => inputArray.reduce((acc, arrValue) => acc + arrValue) / inputArray.length;
+    
+    console.log(getAndPrintAverageES6([2, 2, 2, 2, 2]));
 // ========================================================================================================================
 // Square the Values
 // Square each value in a given array, returning that same array with changed values.
 // ========================================================================================================================
 
     function squareTheValue(inputArray){
-        
+        for(let i = 0; i < inputArray.length; i += 1){
+            inputArray[i] = inputArray[i] * inputArray[i];
+        }
+        return inputArray;
     }
+    
+    console.log(squareTheValue([2, 4, 6, 8, 10]));
     
     function squareTheValueBI(inputArray){
+        return inputArray.map(function(arrValue){
+            return arrValue * arrValue
+        })
         
     }
     
-    squareTheValueES6 = (inputArray) => inputArray.map((arrayValue) => arrayValue * arrayValue)
+    console.log(squareTheValueBI([3, 6, 9, 12, 15]));
+    
+    squareTheValueES6 = inputArray => inputArray.map((arrayValue) => arrayValue * arrayValue)
     console.log(squareTheValueES6(makeAnArray(1, 5)));
 // ========================================================================================================================
 // Zero Out Negative Numbers
 // Return the given array, after setting any negative values to zero.
 // ========================================================================================================================
 
-    function zeroOutNegativeNumber(){
-        
+    function zeroOutNegativeNumber(inputArray){
+        for(let i = 0; i < inputArray.length; i += 1){
+            if(inputArray[i] < 0){
+                inputArray[i] = 0
+            }
+        }
+        return inputArray;
     }
     
-    function zeroOutNegativeNumberBI(){
-        
+    console.log(zeroOutNegativeNumber([-1, 1, -2, 2, -3, 3, 0]));
+    
+    function zeroOutNegativeNumberBI(inputArray){
+        return inputArray.map(function(arrValue){
+            return arrValue < 0 ? 0 : arrValue;
+        })
     }
     
-    zeroOutNegativeNumberES6 = () => {
-        
-    }
+    console.log(zeroOutNegativeNumberBI([-4, 4, -5, 5, -6, 6, 0]));
+    
+    zeroOutNegativeNumberES6 = inputArray => inputArray.map(arrValue => arrValue < 0 ? 0 : arrValue)
 
+    console.log(zeroOutNegativeNumberES6([-7, 7, -8, 8, -9, 9, 0]));
 // ========================================================================================================================
 // *Shift Array Values
 // Given an array, move all values forward by one index, dropping the first and leaving a '0' value at the end.
 // ========================================================================================================================
 
-    function shiftArrayValues(){
-        
+    function shiftArrayValues(inputArray){
+        let firstValue = inputArray[0];
+        for(let i = 0; i < inputArray.length - 1; i += 1){
+            inputArray[i] = inputArray[i + 1]
+        }
+        inputArray[inputArray.length - 1] = 0;
+        return inputArray
     }
     
-    function shiftArrayValuesBI(){
-        
+    console.log(shiftArrayValues([1, 2, 3, 4, 5, 6]));
+    
+    function shiftArrayValuesBI(inputArray){
+        inputArray.shift()
+        inputArray.push(0)
+        return inputArray
     }
     
-    shiftArrayValuesES6 = () => {
-        
+    console.log(shiftArrayValuesBI([1, 2, 3, 4, 5, 6]));
+    
+    shiftArrayValuesES6 = inputArray => {
+        inputArray.reverse();
+        inputArray.pop();
+        inputArray.reverse();
+        inputArray.push(0)
+        return inputArray;
     }
+    
+    console.log(shiftArrayValuesES6([1, 2, 3, 4, 5, 6]));
