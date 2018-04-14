@@ -43,6 +43,28 @@
         }
         return noDupeArray
     }
+    
+    // function removeDuplicates(arr) {
+    //     let unique_array = []
+    //     for (let i = 0; i < arr.length; i++) {
+    //         // *** Everytime you use the .indexOf() method, you are iterating over the entire length of unique_array (meaning you touch each value to see if its there...)  Not bad for arrays that have a few values, but what happens when it has thousands? ***
+    //         // if (unique_array.indexOf(arr[i]) == -1) {
+    //         //     unique_array.push(arr[i])
+    //         // }
+            
+            
+    //         // So, because the array is sorted, you only need to check the last value of the unique array, against the value you currently have
+    //         if(arr[i] === unique_array[unique_array.length - 1]){
+    //             // so the current value equals the last value of the unique_array.  don't do anything here
+    //         }
+    //         else {
+    //             // the current value doesn't equal the last value of the unique_array, so push in the value into the unique array
+    //             unique_array.push(arr[i])
+    //         }
+    //     }
+    //     console.log('UA: ', unique_array);
+    //     return unique_array
+    // }
 
     console.log(removeDuplicates([1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 7, 8, 8]));
 
