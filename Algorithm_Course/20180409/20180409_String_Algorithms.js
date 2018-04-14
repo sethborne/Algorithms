@@ -162,9 +162,26 @@
 // Given (‘aa bb cc bb dd’, ‘bb’), return [‘aa ’,’ cc ’, ‘ dd’]
 // ===========================================================================================================================
 
+    // function split3BI(inputString, breakAt){
+    //     inputString = inputString.split(breakAt)
+    //     return inputString;
+    // }
     function split3BI(inputString, breakAt){
-        inputString = inputString.split(breakAt)
-        return inputString;
+        let returnString = [];
+        let tempString = ''
+        for(let i = 0; i < inputString.length; i += 1){
+            if(inputString[i] !== breakAt[0]){
+                
+            }
+            else if(inputString[i] === breakAt[0]){
+                if(breakAt.length > 1){
+                    
+                }
+                else {
+                    
+                }
+            }
+        }
     }
     console.log(split3BI('aa bb cc', ' '));
     console.log(split3BI('aa bb cc', 'bb'));
